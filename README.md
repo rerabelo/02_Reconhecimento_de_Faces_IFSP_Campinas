@@ -3,27 +3,33 @@ Renata Rabelo e Mariana Cabride
 
 O código depositado nesse repositório realiza várias etapas relacionadas ao treinamento e teste de redes neurais para reconhecimento facial utilizando o dataset PubFig83 disponibilizado no desafio do Kaggle elaborado para a disciplina de Aplicações em Ciência de Dados (D3APL 2023) do curso Especialização em Ciência de Dados do IFSP Campinas. Além disso, esse repositório é continuação da primeira tentativa desenvolvida para resolver o desafio que pode ser acessado no link: https://github.com/rerabelo/01_Reconhecimento_de_Faces_IFSP_Campinas
 
+
 **Descrição das redes neurais adotadas**
 
 Foram adotadas três abordagens de redes neurais. A primeira foi uma Rede Neural Convolucional (CNN) personalizada, que contém duas camadas convolucionais, cada uma seguida por uma camada de max pooling, e duas camadas densas, sendo a última a camada de saída. Essa é uma arquitetura bastante comum para problemas de classificação de imagens.
 Na segunda abordagem, aplicamos a técnica de Transfer Learning à CNN personalizada, mantendo as camadas convolucionais congeladas e substituindo a última camada densa por uma nova, de acordo com o número de categorias do conjunto de dados.
 Por fim, adotamos a ResNet50 pré-treinada, uma das arquiteturas de rede neural convolucional mais populares e eficazes, também utilizando a técnica de Transfer Learning. A ResNet50 contém 50 camadas e foi treinada no conjunto de dados ImageNet, sendo, portanto, capaz de extrair características complexas das imagens.
 
+
 **Pré-processamento**
 
 O pré-processamento incluiu a leitura dos dados de imagem a partir de arquivos CSV, a conversão dos rótulos de formato de texto para números inteiros utilizando o LabelEncoder e a divisão do conjunto de dados de treinamento em subconjuntos de treinamento e validação. As imagens foram redimensionadas para o tamanho de entrada exigido pelos modelos e normalizadas para terem valores de pixel no intervalo de 0 a 1.
+
 
 **Treinamento**
 
 Os modelos foram treinados utilizando o otimizador SGD e a função de perda 'sparse_categorical_crossentropy', adequada para tarefas de classificação multiclasse. Utilizou-se callbacks para parada antecipada (early stopping), a fim de interromper o treinamento se a perda de validação não melhorasse após um determinado número de épocas, e o TensorBoard, para visualizar as métricas de treinamento e validação.
 
+
 **Otimizadores adotados**
 
 Foi utilizado o otimizador Stochastic Gradient Descent (SGD) com uma taxa de aprendizado de 0.01. SGD é uma versão estocástica do método de otimização de descida de gradiente, que atualiza os pesos do modelo de maneira iterativa com base nos dados de treinamento para minimizar a função de perda.
 
+
 **Fine-tuning**
 
 No caso da ResNet50, além do Transfer Learning, também foi aplicado o fine-tuning, descongelando algumas das últimas camadas convolucionais do modelo base e permitindo que seus pesos fossem atualizados durante o treinamento. Isso permite que o modelo se ajuste mais ao conjunto de dados específico.
+
 
 **Validação e discussão dos resultados**
 
