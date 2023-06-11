@@ -11,7 +11,7 @@ Por fim, adotamos a ResNet50 pré-treinada, uma das arquiteturas de rede neural 
 
 
 **Pré-processamento:**
-O pré-processamento incluiu a leitura dos dados de imagem a partir de arquivos CSV, a conversão dos rótulos de formato de texto para números inteiros utilizando o LabelEncoder e a divisão do conjunto de dados de treinamento em subconjuntos de treinamento e validação. As imagens foram redimensionadas para o tamanho de entrada exigido pelos modelos e normalizadas para terem valores de pixel no intervalo de 0 a 1.
+A etapa de pré-processamento envolve a leitura das imagens do conjunto de dados e a aplicação de transformações para deixá-las em um formato adequado para o treinamento da rede neural. Isso inclui redimensionar as imagens para as dimensões desejadas, converter a representação de cores de BGR para RGB e normalizar os valores dos pixels..
 
 
 **Treinamento:**
